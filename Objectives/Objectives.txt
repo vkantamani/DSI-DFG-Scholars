@@ -1,0 +1,24 @@
+(1) Visualization Project
+
+Public data with mistakes
+Comparative situations among groups
+
+(2) Mapping Current Known Situation
+
+Existing Communities (>100 Blocks) - Few Hypotheses
+Registered -> Municipios (What %)
+With bad requests - area pending (What %)
+With land property (Area and location)
+
+(3) Public Land Time Mapping
+
+Map public land data over time
+
+(4) Integration with kobotoolbox
+
+Statistical Consulting
+
+
+
+Mapping Base - Existing Data
+Project design of the bigger timeline
