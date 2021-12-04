@@ -1,0 +1,73 @@
+---
+title: "Riesgo y Tamaño de Comunidades"
+author: "Vivek Kantamani"
+date: "8/12/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Riesgo 
+```{r}
+labels = c("Bajo","Medio","Alto")
+x = c(7,79,289)
+piepercent = round(100*x/sum(x), 1)
+colvec = c("Green","Yellow","Red")
+tiff("Riesgo de Comunidades.tiff", width = 6, height = 6, units = 'in', res = 300)
+
+pie(x,piepercent,main = "Riesgo de Comunidades, Porcentaje", col = colvec)
+par(xpd=TRUE)
+legend("bottomleft", labels, fill = colvec)
+
+dev.off()
+```
+
+
+Blocks
+```{r, message = FALSE}
+library(readr)
+library(magrittr)
+library(dplyr)
+library(ggplot2)
+```
+
+```{r, message = FALSE}
+geo_tbl = read_csv("Geographic Data.csv")
+geo_tbl = geo_tbl %>%
+  select(Departamento:Size_Blocks)
+
+geo_tbl$Departamento = factor(geo_tbl$Departamento)
+geo_tbl$Municipalities_Townships = factor(geo_tbl$Municipalities_Townships)
+geo_tbl
+
+vec_size_blocks = geo_tbl$Size_Blocks
+summary(vec_size_blocks)
+length(vec_size_blocks)
+vec_size_blocks = vec_size_blocks[!is.na(vec_size_blocks)]
+length(vec_size_blocks)
+sort(vec_size_blocks)
+```
+
+```{r}
+labels = c("< 10 Cuadras","> 10 Cuadras")
+x = c(335,964)
+piepercent = round(100*x/sum(x), 1)
+colvec = c("Green","Red")
+tiff("Tamaño de Comunidades.tiff", width = 6, height = 6, units = 'in', res = 300)
+
+pie(x,piepercent,main = "Tamaño de Comunidades (Cuadras), Porcentaje", col = colvec)
+par(xpd=TRUE)
+legend("bottomleft", labels, fill = colvec)
+
+dev.off()
+```
+
+
+
+
+
+
+
+
